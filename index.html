@@ -7,10 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        let $j = jQuery.noConflict(true);
 
+        $j(document).ready(function () {
+            $j('a[href^="#"]:not([href="#demo"]').click(function () {
+                // если в href начинается с #, то обрабатываем клик
+                var scrollEl = $j(this).attr("href"); // возьмем содержимое атрибута href
+                if ($j(scrollEl).length != 0) {
+                    // проверим существование элемента чтобы избежать ошибки
+                    $j("html, body").animate({ scrollTop: $j(scrollEl).offset().top }, 500); // анимируем скроолинг к элементу scrollEl
+                }
+                return false; // выключаем стандартное действие
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
         /* Make the image fully responsive */
         .carousel-inner img {
@@ -21,30 +37,33 @@
 </head>
 
 <body>
-    <!-- <div class="container"> -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#active">Active</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#link1">Link1</a>
-            </li>
-            <li class="#demo">
-                <a class="nav-link" href="#link2">Link2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#demo">Demo</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="container-fluid header p-0">
+        <!-- <div class="container"> -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#band">Band</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacts">Contacts</a>
+                </li>
+            </ul>
+        </nav>
 
-    <div class="jumbotron text-center" id="active">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
+        <div class="jumbotron text-center" id="active">
+            <h1>Space Travel</h1>
+            <p>Resize this responsive page to see the effect!</p>
+        </div>
     </div>
     <!-- </div> -->
-    <div class="container" id="#active">
+    <div class="container" id="services">
+        <h2 class="text-center mt-5">Our services</h2>
         <div class="row mt-5">
             <div class="col-sm-3">
                 <h3>Column 1</h3>
@@ -68,7 +87,8 @@
             </div>
         </div>
     </div>
-    <div class="container" id="link1">
+    <div class="container" id="team">
+        <h2 class="text-center mt-5">Our team</h2>
         <div class="row my-5" id="link2">
             <div class="col-sm-4">
                 <div class="card mx-auto" style="width: 18rem">
@@ -108,7 +128,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" id="band">
+        <h2 class="text-center mt-5 mb-3">Our band</h2>
         <div id="demo" class="carousel slide" data-ride="carousel">
             <ul class="carousel-indicators">
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -125,7 +146,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./images/Earth.jpg" alt="Chicago" width="1100" height="500">
+                    <img src="https://www.w3schools.com/bootstrap4/chicago.jpg" alt="Chicago" width="1100" height="500">
                     <div class="carousel-caption">
                         <h3>Chicago</h3>
                         <p>Thank you, Chicago!</p>
@@ -147,6 +168,35 @@
             </a>
         </div>
     </div>
+    <div class="container-fluid footer p-0" id="contacts">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h3 class="pb-3 pt-5">Contacts</h3>
+
+                <div id="googleMap">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.240870685403!2d36.23463281571539!3d50.006840379416566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a0e6dffdbb8b%3A0xf209264ca6ae97a1!2sSumska%20St%2C%2047%2C%20Kharkiv%2C%20Kharkivs&#39;ka%20oblast%2C%20Ukraine%2C%2061000!5e0!3m2!1sen!2sge!4v1657324154038!5m2!1sen!2sge"
+                        width="100%" height="450" style="border: 0" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <h4 class="pt-3">2023</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="container text-center">
+                    <div class="social-likes p-2">
+                        <a href="https://www.facebook.com/Itschoolkit/" target="_blank" class="px-1"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/it_school_kit/" target="_blank" class="px-1"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
