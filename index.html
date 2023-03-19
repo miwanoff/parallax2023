@@ -14,15 +14,28 @@
         let $j = jQuery.noConflict(true);
 
         $j(document).ready(function () {
+            let offset = 200; // координата сдвига по оси Y
+            let duration = 300; // время выполнения 
+            $j('#totop').fadeOut(0);
             $j('a[href^="#"]:not([href="#demo"]').click(function () {
                 // если в href начинается с #, то обрабатываем клик
-                var scrollEl = $j(this).attr("href"); // возьмем содержимое атрибута href
+                let scrollEl = $j(this).attr("href"); // возьмем содержимое атрибута href
                 if ($j(scrollEl).length != 0) {
                     // проверим существование элемента чтобы избежать ошибки
                     $j("html, body").animate({ scrollTop: $j(scrollEl).offset().top }, 500); // анимируем скроолинг к элементу scrollEl
                 }
                 return false; // выключаем стандартное действие
             });
+
+            $j(window).scroll(function () {
+                if ($j(this).scrollTop() > offset) {
+                    $j('#totop').css("opacity", "0.8"); // возвращаем прозрачность
+                    $j('#totop').fadeIn(duration); // элемент плавно исчезает 
+                } else {
+                    $j('#totop').fadeOut(duration); // элемент плавно появляется
+                }
+            });
+
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
