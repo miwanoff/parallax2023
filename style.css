@@ -38,10 +38,12 @@
 
 .parallax {
   background-color: #185899;
-  background-image: url(images/mars2.jpg);
-  background-position: center -120px;
-  background-attachment: fixed;
-  background-size: cover;
+  background-image: url(images/275-2750441_blue-planet-transparent.png),
+    url(images/mars2.jpg);
+  background-position: 120px 500px, center -90px;
+  background-attachment: fixed, fixed;
+  background-size: 100px 100px, cover;
+  background-repeat: no-repeat, no-repeat;
   color: #ffffff;
   padding: 150px;
 }
