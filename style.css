@@ -35,3 +35,13 @@
     transform: translateY(0%);
   }
 }
+
+.parallax {
+  background-color: #185899;
+  background-image: url(images/mars2.jpg);
+  background-position: center -120px;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #ffffff;
+  padding: 150px;
+}
